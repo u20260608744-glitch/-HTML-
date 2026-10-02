@@ -1,0 +1,4 @@
+interface:
+  display_name: "建筑交互 HTML 方案册"
+  short_description: "先核查项目输入资料，再生成支持多种风格、源模型联动和原册翻阅的建筑交互 HTML 页面"
+  default_prompt: "使用 $architecture-interactive-html，根据我提供的项目资料先列出缺项和可生成模块，再制作选定风格的建筑交互 HTML。"

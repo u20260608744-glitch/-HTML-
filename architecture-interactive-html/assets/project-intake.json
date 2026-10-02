@@ -1,0 +1,67 @@
+{
+  "$schema": "./project-manifest.schema.json",
+  "schemaVersion": "1.0",
+  "phase": "discovery",
+  "project": {
+    "id": null,
+    "name": null,
+    "type": null,
+    "location": null,
+    "stage": null,
+    "audience": null,
+    "purpose": null,
+    "brief": null,
+    "sourceLanguage": null,
+    "requestedInteractions": [],
+    "preserveChapters": [],
+    "designModificationScope": "默认仅制作网页，原资料与建筑几何保持不变",
+    "constraints": []
+  },
+  "assets": [],
+  "schemes": [],
+  "site": {
+    "coordinates": {"latitude": null, "longitude": null, "crs": null, "source": null},
+    "units": null,
+    "north": {"kind": "unknown", "degreesFromModelY": null, "source": null},
+    "boundaryAssetId": null,
+    "baseMapAssetId": null,
+    "analysisAssetIds": [],
+    "metrics": []
+  },
+  "programmeCategories": [],
+  "chapters": [],
+  "book": {"assetId": null, "pages": [], "completeOriginal": null},
+  "capabilities": {
+    "image_reading": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "model_viewer": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "semantic_hotspots": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "real_sections": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "geographic_locator": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "calibrated_scale": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "metrics": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []},
+    "original_book": {"state": "not_requested", "reason": null, "evidenceAssetIds": [], "missing": []}
+  },
+  "presentation": {
+    "locales": [],
+    "defaultLocale": null,
+    "themeId": null,
+    "themeSwitcher": false,
+    "enabledThemeIds": [],
+    "brandAssetIds": [],
+    "targetViewports": [],
+    "motionPreference": "respect_system",
+    "desktopChapterMode": "prefer_one_screen",
+    "mobileChapterMode": "natural_reading"
+  },
+  "delivery": {
+    "format": "single_html",
+    "offlineRequired": true,
+    "outputPath": null,
+    "maxSizeMB": null,
+    "publicationRequested": false,
+    "externalResearch": null
+  },
+  "missingInputs": [],
+  "conflicts": [],
+  "validation": {"state": "not_run", "artifactSha256": null, "checks": []}
+}

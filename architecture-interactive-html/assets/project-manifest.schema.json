@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:architecture-interactive-html:project-manifest:1.0",
+  "title": "Architecture Interactive HTML Project Manifest",
+  "description": "可填写的发现阶段输入与后续项目清单。空模板允许 null；结构通过不等于资料已核实或可以构建。能力必须从真实文件审计得到，所有资产 ID、方案 ID 和跨表引用需另行验证。普通用户填写 Markdown 表即可，由模型提取成此结构。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "phase", "project", "assets", "schemes", "site", "programmeCategories", "chapters", "book", "capabilities", "presentation", "delivery", "missingInputs", "conflicts", "validation"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schemaVersion": {"const": "1.0"},
+    "phase": {"enum": ["discovery", "building", "delivered"]},
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "type", "location", "stage", "audience", "purpose", "brief", "sourceLanguage", "requestedInteractions", "preserveChapters", "designModificationScope", "constraints"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nullableId"},
+        "name": {"$ref": "#/$defs/localizedText"},
+        "type": {"$ref": "#/$defs/nullableText"},
+        "location": {"$ref": "#/$defs/nullableText"},
+        "stage": {"$ref": "#/$defs/nullableText"},
+        "audience": {"$ref": "#/$defs/nullableText"},
+        "purpose": {"$ref": "#/$defs/nullableText"},
+        "brief": {"$ref": "#/$defs/nullableText"},
+        "sourceLanguage": {"$ref": "#/$defs/nullableText"},
+        "requestedInteractions": {"$ref": "#/$defs/textList"},
+        "preserveChapters": {"$ref": "#/$defs/textList"},
+        "designModificationScope": {"$ref": "#/$defs/nullableText"},
+        "constraints": {"type": "array", "items": {"$ref": "#/$defs/constraint"}}
+      }
+    },
+    "assets": {"type": "array", "items": {"$ref": "#/$defs/asset"}},
+    "schemes": {
+      "type": "array",
+      "description": "真实方案数量，不固定三方案；ID 唯一且在各章保持一致。无已识别方案时可为空。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "assetIds", "metrics"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "name": {"$ref": "#/$defs/localizedText"},
+          "assetIds": {"$ref": "#/$defs/idList"},
+          "modelAssetId": {"$ref": "#/$defs/nullableId"},
+          "masterplanAssetId": {"$ref": "#/$defs/nullableId"},
+          "sectionAssetIds": {"$ref": "#/$defs/idList"},
+          "units": {"$ref": "#/$defs/nullableText"},
+          "axisConvention": {"$ref": "#/$defs/nullableText"},
+          "buildingSelectors": {"$ref": "#/$defs/textList", "description": "模型真实对象/组/图层选择器，由解析器提取；不要求用户手填面索引。"},
+          "contextSelectors": {"$ref": "#/$defs/textList"},
+          "semanticMappings": {
+            "type": "array", "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["categoryId", "selectors", "source"],
+              "properties": {
+                "categoryId": {"$ref": "#/$defs/id"},
+                "selectors": {"$ref": "#/$defs/textList"},
+                "source": {"$ref": "#/$defs/source"},
+                "status": {"enum": ["source", "confirmed", "unknown"]}
+              }
+            }
+          },
+          "cameraEvidence": {"$ref": "#/$defs/source"},
+          "description": {"$ref": "#/$defs/localizedText"},
+          "strengths": {"$ref": "#/$defs/textList"},
+          "limitations": {"$ref": "#/$defs/textList"},
+          "metrics": {"type": "array", "items": {"$ref": "#/$defs/metric"}}
+        }
+      }
+    },
+    "site": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coordinates", "units", "north", "boundaryAssetId", "baseMapAssetId", "analysisAssetIds", "metrics"],
+      "properties": {
+        "coordinates": {
+          "type": "object", "additionalProperties": false,
+          "required": ["latitude", "longitude", "crs", "source"],
+          "properties": {
+            "latitude": {"type": ["number", "null"], "minimum": -90, "maximum": 90},
+            "longitude": {"type": ["number", "null"], "minimum": -180, "maximum": 180},
+            "crs": {"$ref": "#/$defs/nullableText"},
+            "source": {"$ref": "#/$defs/source"}
+          }
+        },
+        "units": {"$ref": "#/$defs/nullableText"},
+        "north": {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "degreesFromModelY", "source"],
+          "properties": {
+            "kind": {"enum": ["geographic_north", "model_y", "source_diagram", "unknown"]},
+            "degreesFromModelY": {"type": ["number", "null"]},
+            "source": {"$ref": "#/$defs/source"}
+          }
+        },
+        "boundaryAssetId": {"$ref": "#/$defs/nullableId"},
+        "baseMapAssetId": {"$ref": "#/$defs/nullableId"},
+        "analysisAssetIds": {"$ref": "#/$defs/idList"},
+        "metrics": {"type": "array", "items": {"$ref": "#/$defs/metric"}}
+      }
+    },
+    "programmeCategories": {
+      "type": "array", "description": "项目实际分类，数量不固定；色彩不随装饰主题改变。", "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "label", "color", "source"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "label": {"$ref": "#/$defs/localizedText"},
+          "color": {"type": ["string", "null"], "pattern": "^#[0-9a-fA-F]{6}$"},
+          "pattern": {"$ref": "#/$defs/nullableText"},
+          "source": {"$ref": "#/$defs/source"}
+        }
+      }
+    },
+    "chapters": {
+      "type": "array", "description": "按实际输入规划，可重排但保留用户明确要求的章节。", "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "title", "assetIds", "capabilityIds"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "title": {"$ref": "#/$defs/localizedText"},
+          "conclusion": {"$ref": "#/$defs/localizedText"},
+          "schemeIds": {"$ref": "#/$defs/idList"},
+          "assetIds": {"$ref": "#/$defs/idList"},
+          "capabilityIds": {"$ref": "#/$defs/textList"},
+          "preserve": {"type": "boolean"}
+        }
+      }
+    },
+    "book": {
+      "type": "object", "additionalProperties": false, "required": ["assetId", "pages", "completeOriginal"],
+      "properties": {
+        "assetId": {"$ref": "#/$defs/nullableId"},
+        "completeOriginal": {"type": ["boolean", "null"]},
+        "pages": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false, "required": ["id", "assetId", "sourcePageNumber", "width", "height"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "assetId": {"$ref": "#/$defs/id"},
+            "sourcePageNumber": {"type": "integer", "minimum": 1, "description": "一基原页码；页面次序依数组，不凭文件名猜测。"},
+            "width": {"type": "number", "exclusiveMinimum": 0},
+            "height": {"type": "number", "exclusiveMinimum": 0},
+            "title": {"$ref": "#/$defs/localizedText"}
+          }
+        }}
+      }
+    },
+    "capabilities": {
+      "type": "object", "description": "独立能力状态，以真实证据核查；单一模型开关不能控制全部模块。",
+      "additionalProperties": {"$ref": "#/$defs/capability"}
+    },
+    "presentation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["locales", "defaultLocale", "themeId", "themeSwitcher", "enabledThemeIds", "brandAssetIds", "targetViewports", "motionPreference", "desktopChapterMode", "mobileChapterMode"],
+      "properties": {
+        "locales": {"$ref": "#/$defs/textList"},
+        "defaultLocale": {"$ref": "#/$defs/nullableText"},
+        "themeId": {"anyOf": [{"$ref": "#/$defs/themeId"}, {"type": "null"}]},
+        "themeSwitcher": {"type": "boolean"},
+        "enabledThemeIds": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/themeId"}},
+        "brandAssetIds": {"$ref": "#/$defs/idList"},
+        "targetViewports": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false, "required": ["width", "height"],
+          "properties": {"width": {"type": "integer", "minimum": 1}, "height": {"type": "integer", "minimum": 1}}
+        }},
+        "motionPreference": {"enum": ["respect_system", "static"]},
+        "desktopChapterMode": {"enum": ["prefer_one_screen", "continuous_reading"]},
+        "mobileChapterMode": {"const": "natural_reading"}
+      }
+    },
+    "delivery": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format", "offlineRequired", "outputPath", "maxSizeMB", "publicationRequested", "externalResearch"],
+      "properties": {
+        "format": {"enum": ["single_html", "local_folder", "online_page"]},
+        "offlineRequired": {"type": "boolean"},
+        "outputPath": {"$ref": "#/$defs/nullableText"},
+        "maxSizeMB": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "publicationRequested": {"type": "boolean", "description": "记录用户需求，不作为技能自动授予发布权限。"},
+        "externalResearch": {"type": ["boolean", "null"], "description": "用户偏好；引用外部可变事实时依环境规则核实。"}
+      }
+    },
+    "missingInputs": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false, "required": ["field", "impact", "capabilityIds", "minimumRequest"],
+      "properties": {
+        "field": {"type": "string"},
+        "impact": {"enum": ["blocking_requested_capability", "unknown_can_continue", "optional_presentation"]},
+        "capabilityIds": {"$ref": "#/$defs/textList"},
+        "minimumRequest": {"type": "string"}
+      }
+    }},
+    "conflicts": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false, "required": ["field", "evidence", "resolution"],
+      "properties": {
+        "field": {"type": "string"},
+        "evidence": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/source"}},
+        "resolution": {"$ref": "#/$defs/nullableText"}
+      }
+    }},
+    "validation": {
+      "type": "object", "additionalProperties": false, "required": ["state", "artifactSha256", "checks"],
+      "properties": {
+        "state": {"enum": ["not_run", "partial", "passed", "failed"]},
+        "artifactSha256": {"$ref": "#/$defs/hash"},
+        "checks": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false, "required": ["name", "status", "evidence"],
+          "properties": {
+            "name": {"type": "string"},
+            "status": {"enum": ["not_run", "passed", "failed", "not_applicable"]},
+            "evidence": {"$ref": "#/$defs/nullableText"}
+          }
+        }}
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "nullableId": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+    "nullableText": {"type": ["string", "null"]},
+    "localizedText": {"anyOf": [
+      {"type": ["string", "null"]},
+      {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}}
+    ]},
+    "textList": {"type": "array", "items": {"type": "string"}},
+    "idList": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "hash": {"type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$"},
+    "themeId": {"enum": ["forest-editorial", "paper-portfolio", "blueprint-technical", "sandstone-gallery", "swiss-grid", "monochrome-exhibition"]},
+    "source": {
+      "anyOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["assetId", "locator"], "properties": {
+          "assetId": {"$ref": "#/$defs/id"},
+          "locator": {"type": "string", "minLength": 1, "description": "原页码/表格行/对象ID/用户确认段落；不得只写来源可信。"},
+          "version": {"$ref": "#/$defs/nullableText"},
+          "method": {"$ref": "#/$defs/nullableText"}
+        }}
+      ]
+    },
+    "asset": {
+      "type": "object", "additionalProperties": false, "required": ["id", "path", "kind", "readState", "sha256"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "path": {"type": "string", "minLength": 1, "description": "输入可为路径、链接或附件名；交付依赖应转为本地文件/内嵌数据。"},
+        "kind": {"enum": ["brief", "source_model", "model_export", "drawing", "metrics", "site", "book", "image", "brand", "case", "user_statement", "other"]},
+        "readState": {"enum": ["unread", "read", "unreadable", "missing"]},
+        "sha256": {"$ref": "#/$defs/hash"},
+        "mediaType": {"$ref": "#/$defs/nullableText"},
+        "version": {"$ref": "#/$defs/nullableText"},
+        "sourceAssetId": {"$ref": "#/$defs/nullableId"},
+        "credit": {"$ref": "#/$defs/nullableText"},
+        "license": {"$ref": "#/$defs/nullableText"},
+        "width": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "height": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "notes": {"$ref": "#/$defs/nullableText"}
+      }
+    },
+    "constraint": {
+      "description": "既可用 metric 记录数值限制，也可记录保留树木、禁止改源几何等文字限制；来源指向原资料或用户指令。",
+      "oneOf": [
+        {"$ref": "#/$defs/metric"},
+        {"type": "object", "additionalProperties": false, "required": ["id", "label", "statement", "status", "source"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "label": {"$ref": "#/$defs/localizedText"},
+            "statement": {"$ref": "#/$defs/nullableText"},
+            "status": {"enum": ["source", "assumed", "unknown", "not_applicable"]},
+            "source": {"$ref": "#/$defs/source"},
+            "basis": {"$ref": "#/$defs/nullableText"}
+          },
+          "allOf": [
+            {"if": {"properties": {"status": {"enum": ["source", "assumed"]}}, "required": ["status"]}, "then": {"properties": {"statement": {"type": "string", "minLength": 1}}}},
+            {"if": {"properties": {"status": {"const": "source"}}, "required": ["status"]}, "then": {"properties": {"source": {"type": "object"}}}},
+            {"if": {"properties": {"status": {"enum": ["unknown", "not_applicable"]}}, "required": ["status"]}, "then": {"properties": {"statement": {"type": "null"}}}}
+          ]
+        }
+      ]
+    },
+    "metric": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "value", "unit", "status", "source", "basis"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id", "description": "如 land_area/footprint/above_ground_area/countable_area/far/building_density/parking_count；项目口径优先。"},
+        "label": {"$ref": "#/$defs/localizedText"},
+        "value": {"type": ["number", "null"]},
+        "range": {"type": ["array", "null"], "prefixItems": [{"type": "number"}, {"type": "number"}], "minItems": 2, "maxItems": 2, "description": "区间概算时 value 为空，range 保存上下界；不凭空取平均。"},
+        "unit": {"$ref": "#/$defs/nullableText"},
+        "status": {"enum": ["source", "measured", "derived", "assumed", "unknown", "not_applicable"]},
+        "source": {"$ref": "#/$defs/source"},
+        "basis": {"$ref": "#/$defs/nullableText"},
+        "formula": {"$ref": "#/$defs/nullableText"},
+        "assumptions": {"$ref": "#/$defs/textList"},
+        "inputMetricIds": {"$ref": "#/$defs/textList"}
+      },
+      "allOf": [
+        {"if": {"properties": {"range": {"type": "array"}}, "required": ["range"]}, "then": {"properties": {"value": {"type": "null"}}}},
+        {"if": {"properties": {"status": {"enum": ["unknown", "not_applicable"]}}, "required": ["status"]}, "then": {"properties": {"value": {"type": "null"}, "range": {"type": "null"}}}},
+        {"if": {"properties": {"status": {"enum": ["source", "measured", "derived", "assumed"]}}, "required": ["status"]}, "then": {"anyOf": [{"properties": {"value": {"type": "number"}}}, {"required": ["range"], "properties": {"range": {"type": "array"}}}]}},
+        {"if": {"properties": {"status": {"enum": ["source", "measured", "derived"]}}, "required": ["status"]}, "then": {"properties": {"source": {"type": "object"}}}},
+        {"if": {"properties": {"status": {"const": "derived"}}, "required": ["status"]}, "then": {"required": ["formula", "inputMetricIds"], "properties": {"formula": {"type": "string", "minLength": 1}, "inputMetricIds": {"minItems": 1}}}},
+        {"if": {"properties": {"status": {"const": "assumed"}}, "required": ["status"]}, "then": {"required": ["assumptions"], "properties": {"assumptions": {"minItems": 1}}}}
+      ]
+    },
+    "capability": {
+      "type": "object", "additionalProperties": false, "required": ["state", "reason", "evidenceAssetIds", "missing"],
+      "properties": {
+        "state": {"enum": ["ready", "degraded", "blocked", "not_requested"]},
+        "reason": {"$ref": "#/$defs/nullableText"},
+        "evidenceAssetIds": {"$ref": "#/$defs/idList"},
+        "missing": {"$ref": "#/$defs/textList"}
+      },
+      "allOf": [{"if": {"properties": {"state": {"enum": ["degraded", "blocked"]}}, "required": ["state"]}, "then": {"properties": {"reason": {"type": "string", "minLength": 1}, "missing": {"minItems": 1}}}}]
+    }
+  }
+}

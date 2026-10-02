@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "purpose": "建筑交互 HTML 的表现预设；根据项目内容和屏幕调整，不替代项目事实、语义色或源几何。",
+  "programmeColorPolicy": "Use the project-defined category registry in every theme; never infer function from theme colors.",
+  "invariants": ["source geometry and coordinates", "source image proportions and colors", "scheme IDs and selection", "programme meaning", "metric values and provenance", "source pages", "manual camera and pause state"],
+  "fontPolicy": "System fallbacks are supplied. Custom local fonts need permission, embedding and actual glyph/viewport checks.",
+  "presets": [
+    {
+      "id": "forest-editorial", "name": "深林编辑", "recommendedFor": ["住宅与景观概念", "模型主导的汇报"],
+      "description": "项目名与主图分置，宽模型舞台配窄说明栏，细章线组织连续阅读。",
+      "palette": {"background": "#142018", "surface": "#1d2c21", "paper": "#eff0e7", "text": "#f0f3e8", "muted": "#b4c2b0", "accent": "#d4e5aa", "line": "#667861", "paperInk": "#344233", "modelTop": "#f0f1e5", "modelFront": "#ccd4bf", "modelSide": "#aab99c"},
+      "typography": {"body": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "emphasis": "Georgia, 'Songti SC', 'SimSun', serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 600, "bodyLineHeight": 1.75, "headingScale": "large", "emphasisStyle": "italic for Latin emphasis only"},
+      "layout": {"id": "editorial-asymmetric", "columns": ["0.7fr", "1.3fr"], "imageShare": 0.65, "headingPlacement": "left alongside model", "captionPlacement": "adjacent narrow rail", "drawingGrouping": "wide equal-height strip", "density": "medium", "alignment": "left", "mobile": "single column, image and complete reading adjacent"},
+      "modelPaper": {"type": "fine-grid", "background": "#eff0e7", "gridColor": "#c9d1c2", "gridSpacingCssPx": 24, "gridOpacity": 0.45, "material": "pale clay with restrained source-position landscape", "lighting": "neutral studio, comparable across schemes", "shadow": "soft, optional; presentation only"},
+      "motion": {"target": "calm model focus", "transitionMs": 260, "automaticRotation": "slow, pausable if a real model is available", "pageTransition": "short fade", "previewEffect": "slow-drift", "previewDurationMs": 12000, "reducedMotion": "stop automatic motion and remove decorative transitions", "preserveManualPause": true}
+    },
+    {
+      "id": "paper-portfolio", "name": "白纸作品集", "recommendedFor": ["作品集", "院校与事务所展示", "图纸主导项目"],
+      "description": "宽松纸面与主图组，图注独立成窄栏，局部图形成有节制的阅读节奏。",
+      "palette": {"background": "#f7f5ed", "surface": "#fffdf7", "paper": "#f2f0e6", "text": "#252a23", "muted": "#62675b", "accent": "#405b42", "line": "#bfc5b6", "paperInk": "#485246", "modelTop": "#faf9f0", "modelFront": "#d9ddcd", "modelSide": "#bdc8b3"},
+      "typography": {"body": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "Georgia, 'Songti SC', 'SimSun', serif", "emphasis": "Georgia, 'Songti SC', 'SimSun', serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 500, "bodyLineHeight": 1.8, "headingScale": "large", "emphasisStyle": "serif, restrained"},
+      "layout": {"id": "portfolio-image-caption", "columns": ["1.7fr", "0.65fr"], "imageShare": 0.72, "headingPlacement": "wide page heading", "captionPlacement": "right reading column", "drawingGrouping": "main image plus smaller supporting figures", "density": "low", "alignment": "left", "mobile": "single column, captions follow their images"},
+      "modelPaper": {"type": "subtle-hatch", "background": "#f2f0e6", "gridColor": "#d1d4c5", "gridSpacingCssPx": 30, "gridOpacity": 0.2, "material": "fine line, marker or light pencil representation from the same source", "lighting": "neutral daylight-like studio", "shadow": "light and optional; never a performance claim"},
+      "motion": {"target": "uninterrupted reading", "transitionMs": 240, "automaticRotation": "off initially; user may enable real model orbit", "pageTransition": "gentle fade", "previewEffect": "none", "previewDurationMs": 0, "reducedMotion": "remove decorative transitions", "preserveManualPause": true}
+    },
+    {
+      "id": "blueprint-technical", "name": "蓝图技术", "recommendedFor": ["技术评审", "结构与空间组织分析"],
+      "description": "统一图框组成工程图矩阵，尺寸和注释共享轨道，紧凑数据栏保持稳定位置。",
+      "palette": {"background": "#14263d", "surface": "#1b334f", "paper": "#1b334f", "text": "#edf4fc", "muted": "#b7c8dc", "accent": "#f5d978", "line": "#627f9d", "paperInk": "#dce9f7", "modelTop": "#355270", "modelFront": "#274361", "modelSide": "#203952"},
+      "typography": {"body": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "emphasis": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 700, "bodyLineHeight": 1.65, "headingScale": "compact", "emphasisStyle": "weight and annotation marker"},
+      "layout": {"id": "technical-matrix", "columns": ["1.5fr", "0.8fr"], "imageShare": 0.64, "headingPlacement": "compact drawing header", "captionPlacement": "fixed right annotation rail", "drawingGrouping": "same-size aligned drawing matrix", "density": "high but readable", "alignment": "left", "mobile": "stack full frames and all annotations; no clipped text"},
+      "modelPaper": {"type": "major-minor-grid", "background": "#1b334f", "gridColor": "#7c9abc", "gridSpacingCssPx": 20, "gridOpacity": 0.2, "material": "source-backed wire and clear cut-line hierarchy", "lighting": "flat technical visibility", "shadow": "off initially"},
+      "motion": {"target": "precise state change", "transitionMs": 100, "automaticRotation": "off initially", "pageTransition": "direct or very short fade", "previewEffect": "none", "previewDurationMs": 0, "reducedMotion": "immediate state changes", "preserveManualPause": true}
+    },
+    {
+      "id": "sandstone-gallery", "name": "砂岩展馆", "recommendedFor": ["文化建筑", "酒店与商业", "室内材料表达"],
+      "description": "居中的大图舞台与有限行长，展签和温和层级串联空间故事。",
+      "palette": {"background": "#eee5d6", "surface": "#f8f0e3", "paper": "#e9dfcf", "text": "#443527", "muted": "#76604a", "accent": "#984f37", "line": "#b4a28b", "paperInk": "#645039", "modelTop": "#fff4df", "modelFront": "#e0ceb0", "modelSide": "#c6ad8d"},
+      "typography": {"body": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "Georgia, 'Songti SC', 'SimSun', serif", "emphasis": "Georgia, 'Songti SC', 'SimSun', serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 500, "bodyLineHeight": 1.85, "headingScale": "large", "emphasisStyle": "serif, no decorative body font"},
+      "layout": {"id": "gallery-centered", "columns": ["1fr"], "imageShare": 1, "headingPlacement": "centered above stage", "captionPlacement": "short exhibition label below image", "drawingGrouping": "paired exhibit panels", "density": "low", "alignment": "center for headings; left for long body", "mobile": "continuous exhibition reading"},
+      "modelPaper": {"type": "warm-paper", "background": "#e9dfcf", "gridColor": "#c7b59d", "gridSpacingCssPx": 36, "gridOpacity": 0.12, "material": "warm clay or actual source materials", "lighting": "warm studio with stable camera", "shadow": "soft and restrained; presentation only"},
+      "motion": {"target": "stable exhibition viewing", "transitionMs": 300, "automaticRotation": "off initially", "pageTransition": "short dissolve", "previewEffect": "none", "previewDurationMs": 0, "reducedMotion": "remove decorative transitions", "preserveManualPause": true}
+    },
+    {
+      "id": "swiss-grid", "name": "瑞士网格", "recommendedFor": ["竞赛", "方案评比", "办公、校园与公共建筑"],
+      "description": "十二列模块系统固定标题、图纸和数据位置，以编号和左对齐建立秩序。",
+      "palette": {"background": "#f4f4f0", "surface": "#ffffff", "paper": "#eeeeea", "text": "#1b1b1b", "muted": "#595959", "accent": "#b22727", "line": "#a3a3a0", "paperInk": "#303030", "modelTop": "#ffffff", "modelFront": "#d7d7d0", "modelSide": "#b8b8b0"},
+      "typography": {"body": "Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif", "emphasis": "Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 700, "bodyLineHeight": 1.65, "headingScale": "large", "emphasisStyle": "weight and red index, no italics"},
+      "layout": {"id": "swiss-twelve-column", "columns": 12, "imageShare": 0.67, "headingPlacement": "aligned to columns 1–8", "captionPlacement": "columns 9–12", "drawingGrouping": "strict equal-size modules", "density": "medium", "alignment": "left", "mobile": "retain order and numbered modules in one column"},
+      "modelPaper": {"type": "plain", "background": "#eeeeea", "gridColor": "#ccccca", "gridSpacingCssPx": 0, "gridOpacity": 0, "material": "white clay or flat structural diagram", "lighting": "neutral studio", "shadow": "minimal, optional"},
+      "motion": {"target": "direct comparison", "transitionMs": 120, "automaticRotation": "off initially", "pageTransition": "instant or short fade", "previewEffect": "none", "previewDurationMs": 0, "reducedMotion": "immediate state changes", "preserveManualPause": true}
+    },
+    {
+      "id": "monochrome-exhibition", "name": "单色展廊", "recommendedFor": ["展览", "业主讲解", "视觉作品集"],
+      "description": "全宽模型舞台、少量强标题和平行信息条，下方图组沿页继续展开。",
+      "palette": {"background": "#171717", "surface": "#242424", "paper": "#2b2b2b", "text": "#f3f3ef", "muted": "#bdbdb6", "accent": "#deded6", "line": "#777773", "paperInk": "#e4e4dc", "modelTop": "#f4f4ed", "modelFront": "#bdbdb4", "modelSide": "#92928a"},
+      "typography": {"body": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "heading": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "emphasis": "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif", "numbers": "Consolas, 'SFMono-Regular', monospace", "headingWeight": 600, "bodyLineHeight": 1.75, "headingScale": "extra-large", "emphasisStyle": "scale and weight"},
+      "layout": {"id": "exhibition-stage", "columns": ["1fr"], "imageShare": 1, "headingPlacement": "strong title above full-width stage", "captionPlacement": "parallel information rail below stage", "drawingGrouping": "continuous large image strip", "density": "low", "alignment": "left", "mobile": "large touch-friendly stage then complete details"},
+      "modelPaper": {"type": "dark-stage", "background": "#2b2b2b", "gridColor": "#777773", "gridSpacingCssPx": 0, "gridOpacity": 0, "material": "monochrome presentation of trusted geometry; source photographs remain untinted", "lighting": "neutral exhibition studio", "shadow": "controlled soft grounding; optional"},
+      "motion": {"target": "focus and deliberate enlargement", "transitionMs": 220, "automaticRotation": "off initially; explicit user start", "pageTransition": "short focus/fade", "previewEffect": "none", "previewDurationMs": 0, "reducedMotion": "remove decorative transitions", "preserveManualPause": true}
+    }
+  ]
+}
