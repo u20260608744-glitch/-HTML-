@@ -1,0 +1,99 @@
+{
+  "$schema": "./video-manifest.schema.json",
+  "version": "1.0",
+  "phase": "discovery",
+  "requested": false,
+  "project_manifest": null,
+  "source_html": null,
+  "source_html_sha256": null,
+  "source_assets": [],
+  "source_url": null,
+  "audience": null,
+  "purpose": null,
+  "coverage": "chapter_overview",
+  "priority_topics": [],
+  "max_seconds": 300,
+  "target_seconds": 295,
+  "fps": 25,
+  "capture": {
+    "width": 1920,
+    "height": 1080,
+    "locale": null,
+    "motion_speed": 1,
+    "model_rotation": "if_available",
+    "book_coverage": "overview",
+    "retain_source_geometry": true
+  },
+  "voice": {
+    "enabled": true,
+    "language": "en",
+    "gender_preference": "female",
+    "provider": null,
+    "voice_id": null,
+    "audio_path": null,
+    "style": "自然、清晰、平静的建筑汇报",
+    "terms_source": null,
+    "usage_status": "unknown"
+  },
+  "music": {
+    "mode": "original_or_licensed_instrumental",
+    "path": null,
+    "style": "克制、轻柔、无人声，不遮住讲解",
+    "source": null,
+    "license_source": null,
+    "usage_status": "unknown",
+    "attribution": null
+  },
+  "subtitles": {
+    "languages": [
+      "en"
+    ],
+    "burn_in": true,
+    "external_srt": true,
+    "path": null
+  },
+  "style": {
+    "follow_html": true,
+    "theme_id": null,
+    "reference_asset": null
+  },
+  "scenes": [],
+  "outputs": [
+    {
+      "id": "landscape",
+      "aspect": "16:9",
+      "width": 1920,
+      "height": 1080,
+      "path": null,
+      "cover_path": null,
+      "video_codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_codec": "aac"
+    },
+    {
+      "id": "portrait",
+      "aspect": "9:16",
+      "width": 1080,
+      "height": 1920,
+      "path": null,
+      "cover_path": null,
+      "video_codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_codec": "aac"
+    }
+  ],
+  "delivery": {
+    "output_directory": null,
+    "package_zip": true,
+    "embed_in_html": false,
+    "publication_requested": false,
+    "channels": [],
+    "platform_rules_checked_at": null
+  },
+  "missing_inputs": [],
+  "validation": {
+    "state": "not_run",
+    "report_paths": [],
+    "unverified": []
+  }
+}

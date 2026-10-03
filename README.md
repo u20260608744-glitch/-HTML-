@@ -1,6 +1,8 @@
-# 建筑交互 HTML 方案册技能
+# 建筑交互 HTML 方案册与汇报视频技能
 
 把项目模型、图纸、任务书和面积表，整理成可阅读、可比较、可操作的 HTML 方案册。先核查资料，再决定能实现哪些功能；资料不够时，仍可完成有依据的图文部分。
+
+**v1.1：加入五分钟以内汇报视频流程。** 可继续使用已有 HTML，按其章节讲解并录制真实模型操作，制作旁白、配乐、同步字幕，以及横屏和竖屏下载版。视频仅在你提出要求时制作；声音、语言、时长和风格都可调整。
 
 适用于住宅、办公、商业、公共建筑、园区、更新、室内、景观与城市设计项目。支持 **1 至 N 个方案**，原册页数按实际输入读取，章节随项目内容调整。
 
@@ -15,6 +17,24 @@
 - [填写项目资料表](architecture-interactive-html/references/user-intake.md)
 - [查看六种风格说明](architecture-interactive-html/references/styles.md)
 - [风格预览 HTML 文件](architecture-interactive-html/assets/style-gallery.html)
+- [视频制作流程及必需条件](architecture-interactive-html/references/video-production.md)
+- [填写视频资料表 JSON](architecture-interactive-html/assets/video-intake.json)
+
+## 看已完成的4分55秒示例
+
+[![Woodlands 实际汇报演示封面](docs/images/woodlands-video-cover.jpg)](https://github.com/u20260608744-glitch/-HTML-/releases/download/v1.1.0/woodlands-landscape-1080p.mp4)
+
+- [横屏 MP4：1920×1080，4分55秒](https://github.com/u20260608744-glitch/-HTML-/releases/download/v1.1.0/woodlands-landscape-1080p.mp4)
+- [竖屏 MP4：1080×1920，4分55秒](https://github.com/u20260608744-glitch/-HTML-/releases/download/v1.1.0/woodlands-portrait-1080p.mp4)
+- [完整发布下载包：横屏、竖屏、封面、说明](https://github.com/u20260608744-glitch/-HTML-/releases/download/v1.1.0/woodlands-social-downloads.zip)
+- [示例讲稿、章节时间和来源版本说明](docs/woodlands-video.md)
+- [独立英文字幕 SRT](docs/video/woodlands-en.srt)
+
+示例沿 Woodlands HTML 的真实内容组织：模型旋转、四项场地分析、社区回应、三种形体、三方案总图与指标、剖面、功能联读、已建案例、方案比较、原册及总结。含英文女声、原创轻音乐、画内字幕。**三方案、17页、11段和75镜头属于这个案例**，新项目按实际资料组织。原册17页是快速浏览，不能当作每页已经详细讲解。
+
+下载文件分别适配横屏阅读和竖屏手机构图，供微信、小红书等渠道选用。本次完成文件导出与本地验收，未在这些平台执行上传；实际上传须符合当时平台、账号及素材授权要求。视频记录了制作时的 HTML 快照，版本与当前 HTML 的差异见示例说明。
+
+视频附件放在独立 GitHub Release，技能 ZIP 只包含制作规范、表格、风格资源和辅助脚本。仓库为私有，视频下载也需要访问权限。
 
 下载并解压后，**双击 `architecture-interactive-html/assets/style-gallery.html`，在本地浏览器里切换六种风格**。它不依赖外网，可用鼠标或键盘操作；按钮聚焦后用方向键、Home / End 切换。
 
@@ -45,6 +65,8 @@ GitHub 的 HTML 文件页展示的是源码，**不是正在运行的交互预�
 - [build-contract.md](architecture-interactive-html/references/build-contract.md)
 - [styles.md](architecture-interactive-html/references/styles.md)
 - [acceptance.md](architecture-interactive-html/references/acceptance.md)
+
+制作视频时，再附上 [video-production.md](architecture-interactive-html/references/video-production.md) 和 [video-intake.json](architecture-interactive-html/assets/video-intake.json)。已有 HTML 与项目文件一起提供；不需要重新填写附件中已有的章节和指标。
 
 ```text
 请采用附件中的 architecture-interactive-html 技能，为我的项目制作 HTML 方案册。
@@ -167,7 +189,7 @@ $architecture-interactive-html
 
 这些能力独立判断。例如：有模型和面积表、没有功能映射，可以完成真实模型浏览和指标展示；功能高亮仍待补。缺模型但有完整原册，也可以交付有用的原册交互版。
 
-## 三个可以直接复制的请求
+## 四个可以直接复制的请求
 
 ### A. 只有图纸，先做完整阅读版
 
@@ -206,6 +228,24 @@ $architecture-interactive-html
 
 普通 GPT 未安装技能时，把 `$architecture-interactive-html` 换成“请采用附件中的 architecture-interactive-html 技能”，并上传核心文件即可。
 
+### D. 用已有 HTML 制作五分钟汇报视频
+
+```text
+$architecture-interactive-html
+请读取附件中的最终 HTML 和关联项目资料，制作300秒以内的汇报演示视频。
+按 HTML 现有章节和内容展开说明，采用自然英文女声、轻柔器乐和英文字幕。
+真实演示可用模型的旋转、方案切换和关键交互，保持模型操作与声音原速。
+输出1920×1080横屏及1080×1920竖屏MP4、各自封面、SRT字幕、讲稿、
+章节时间索引与下载ZIP，用于微信和小红书；先完成文件，暂不上传平台。
+沿用 HTML 的视觉风格，竖屏重新构图，图纸和模型不变形。
+先提取现有资料和章节，只询问真正缺项。若逐项详解无法在5分钟内完成，
+先给出重点覆盖和时间分配，压缩重复讲解，不通过加速声音塞入。
+```
+
+视频需提供：**最终 HTML 或其可访问入口、要讲的重点/读者，以及已有约束**。章节、方案、页数和操作由 AI 提取；有自己的声音、音乐或 Logo 可一起提供，否则按可用工具选择有使用依据的素材。语音生成/录制、浏览器捕获和剪辑工具是制作能力条件，不能靠技能文本代替。没有执行工具的 GPT 可输出讲稿、分镜和配置，不能声称已生成可下载 MP4。
+
+可覆盖默认值：中文/其他语言、不同声音、无配乐、字幕语言、不同时间上限、单一比例或多个比例。视频可以采用六种 HTML 风格，也可按你提供的品牌视觉设计。详细填写项见[用户填写表](architecture-interactive-html/references/user-intake.md)。
+
 ## 会交付什么
 
 按实际可用能力，通常包括：
@@ -214,6 +254,8 @@ $architecture-interactive-html
 2. 输入清单、“已具备 / 缺项 / 降级”说明和来源/指标口径。
 3. 选定风格、可用操作和实际验证结果。
 4. 需要后续维护时，保留源代码、项目数据与构建/QA 记录。
+
+请求视频时另交付成片、横竖屏封面、字幕、讲稿、时间索引和配乐出处，并记录最终媒体及录制源文件的 SHA256。视频放在独立文件夹/ZIP；只有你明确要求才嵌入原 HTML。
 
 桌面优先图文对齐、关键内容在同一章节完整阅读；手机允许复合图文自然延长，不靠缩小到难读或隐藏正文实现“一屏”。按钮应有真实行为，重复主入口合并，方案及原页上下文入口仍保留。
 
@@ -227,6 +269,9 @@ $architecture-interactive-html
 - **六风格预览**：本地 Edge 浏览器、关闭网络，在 1440×1000 与 390×844 下切换全部六种风格；检查布局差异、键盘、构图线、暂停和减少动态偏好。无脚本错误及外部运行请求。
 - **独立前向试用**：使用专门原创的虚构诊所资料，实际读取文字任务、平面 SVG 和剖面 SVG；生成 1 方案、3 功能类别、2 张独立源图的中文离线页面，含瑞士网格/白纸作品集/蓝图技术三主题。Edge + Playwright 在 1920×1080、1280×720、390×844 下完成 305 项浏览器检查和 27 张截图；图纸阅读、缩放/平移、键盘/触摸、焦点回归与离线运行通过。
 - **缺项处理**：该试用未提供模型、真实尺度、法定面积口径和停车布局，因此没有假旋转、假切剖、伪真北、FAR/密度或停车数字。
+- **视频示例**：Woodlands 母版295.000秒，横竖发布版容器295.019秒，均低于300秒；25fps、7375帧。两版实际完成 H.264/AAC、yuv420p、SAR1:1、MP4前置索引和全音视频解码检查。完整记录见[示例验收摘要](docs/video/verification-summary.json)。实际平台上传不在本次验证范围内。
+- **视频工具**：独立配置/schema 与按实测音频排时、最终媒体验收脚本随包提供；技术脚本不代替讲稿审查、真实动作确认、字幕可读性和听感检查。新项目应对自己的最终文件执行，不继承此案例的通过状态。
+- **独立视频输入试用**：另用原创室内更新资料（1方案、2张SVG、无3D/尺度/指标），保留中文女声偏好、90秒上限和仅竖屏要求；用实际技术测试音完成85秒/2125帧排时，并验证超时、缺文件、错误源hash与加速配置的拒绝。这里验证的是输入与排时，不是已经录制了新的中文旁白或影片。
 
 当前验证**不覆盖所有原生模型格式、任意规模模型、全部设备或任意建筑任务**。新项目需针对实际启用能力和最终文件重新核查；不能执行时应标注“未运行”，而不是声称通过。完整验收方法见[验收与交付](architecture-interactive-html/references/acceptance.md)。
 
@@ -245,3 +290,7 @@ $architecture-interactive-html
 | [主题预设](architecture-interactive-html/assets/theme-presets.json) | AI/开发者 | 配色、字体、布局、纸面与动效初始配置 |
 | [离线风格预览](architecture-interactive-html/assets/style-gallery.html) | 用户本地打开 | 选择方向；使用示意图，不是项目生成器 |
 | [Codex 元数据](architecture-interactive-html/agents/openai.yaml) | Codex 环境 | 技能显示与发现信息 |
+| [视频流程](architecture-interactive-html/references/video-production.md) | 请求视频时的 AI/制作者 | 实测时间预算、真实录制、旁白配乐、字幕、横竖屏与验证 |
+| [视频配置](architecture-interactive-html/assets/video-intake.json) / [Schema](architecture-interactive-html/assets/video-manifest.schema.json) | AI/开发者；用户可用文字填写 | 与 HTML manifest 分离的可选视频项目配置 |
+| [视频辅助脚本](architecture-interactive-html/scripts/video_tools.py) | 有执行工具的 AI/开发者 | `plan` 实测音频排段；`verify` 检查最终 MP4、字幕及来源 hash |
+| [实际示例说明](docs/woodlands-video.md) | 用户 | 查看成片效果、讲稿、时间索引和使用边界 |

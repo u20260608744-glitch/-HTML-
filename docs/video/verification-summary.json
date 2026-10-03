@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "kind": "Actual Woodlands example technical media verification",
+  "capturedHTMLSHA256": "9998461e3f047e27841eab5166067331b3ea39cfef14146d4507e7ecefff18bb",
+  "currentHTMLSHA256": "0739518696654ca25a1c03fa02af89a98803e64c183f4e6fdbd9db601fad2b3f",
+  "masterDurationSeconds": 295.0,
+  "maximumSeconds": 300,
+  "versions": [
+    {
+      "releaseAsset": "woodlands-portrait-1080p.mp4",
+      "sha256": "f747de09caed0a51aa2116c3fdded8c20f6ce6dceafa40151a9422ab0f25a789",
+      "sizeBytes": 18927732,
+      "durationSeconds": 295.019,
+      "resolution": [
+        1080,
+        1920
+      ],
+      "fps": 25.0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuv420p",
+      "SAR": "1:1",
+      "audioCodec": "aac",
+      "audioSampleRate": 48000,
+      "audioChannels": 2,
+      "frames": [
+        {
+          "timeSeconds": 11.18,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-01-11.18s.png",
+          "label": "Rotating source model"
+        },
+        {
+          "timeSeconds": 36.36,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-02-36.36s.png",
+          "label": "Site and height analysis"
+        },
+        {
+          "timeSeconds": 82.34,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-03-82.34s.png",
+          "label": "Three architectural forms"
+        },
+        {
+          "timeSeconds": 121.52,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-04-121.52s.png",
+          "label": "Master plan and indicators"
+        },
+        {
+          "timeSeconds": 184.22,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-05-184.22s.png",
+          "label": "Functions and model"
+        },
+        {
+          "timeSeconds": 214.96,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-06-214.96s.png",
+          "label": "Built precedent"
+        }
+      ],
+      "faststart": true,
+      "fullAudioVideoDecodeExitCode": 0,
+      "helperFullDecodeFrames": 7375,
+      "helperChecksPassed": 23
+    },
+    {
+      "releaseAsset": "woodlands-landscape-1080p.mp4",
+      "sha256": "36f9045d1baae777f2aeb1a89fd1e1f4ace5874f92511aa6459fc8095ea26443",
+      "sizeBytes": 25829315,
+      "durationSeconds": 295.019,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 25.0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuv420p",
+      "SAR": "1:1",
+      "audioCodec": "aac",
+      "audioSampleRate": 48000,
+      "audioChannels": 2,
+      "frames": [
+        {
+          "timeSeconds": 184.22,
+          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\wechat-channels-final-01-184.22s.png",
+          "label": "Functions and model"
+        }
+      ],
+      "faststart": true,
+      "fullAudioVideoDecodeExitCode": 0,
+      "helperFullDecodeFrames": 7375,
+      "helperChecksPassed": 23
+    }
+  ],
+  "sourceIdentityScope": "Current HTML file hash check does not prove old video captures this current revision. Video capture snapshot remains 999846.",
+  "visualReview": "Actual final-frame contact sheets provided for human review; no automatic claim of UI legibility or undistorted model appearance.",
+  "actualPlatformUpload": false,
+  "unverified": [
+    "Platform account upload acceptance",
+    "All visual and narration semantics by this technical helper",
+    "Continuous playback or listening in this skill-update task"
+  ]
+}
