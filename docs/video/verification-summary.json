@@ -1,4 +1,5 @@
 {
+  "localEvidenceNotDistributed": true,
   "pass": true,
   "kind": "Actual Woodlands example technical media verification",
   "capturedHTMLSHA256": "9998461e3f047e27841eab5166067331b3ea39cfef14146d4507e7ecefff18bb",
@@ -25,32 +26,32 @@
       "frames": [
         {
           "timeSeconds": 11.18,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-01-11.18s.png",
+          "frameFile": "xiaohongshu-final-01-11.18s.png",
           "label": "Rotating source model"
         },
         {
           "timeSeconds": 36.36,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-02-36.36s.png",
+          "frameFile": "xiaohongshu-final-02-36.36s.png",
           "label": "Site and height analysis"
         },
         {
           "timeSeconds": 82.34,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-03-82.34s.png",
+          "frameFile": "xiaohongshu-final-03-82.34s.png",
           "label": "Three architectural forms"
         },
         {
           "timeSeconds": 121.52,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-04-121.52s.png",
+          "frameFile": "xiaohongshu-final-04-121.52s.png",
           "label": "Master plan and indicators"
         },
         {
           "timeSeconds": 184.22,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-05-184.22s.png",
+          "frameFile": "xiaohongshu-final-05-184.22s.png",
           "label": "Functions and model"
         },
         {
           "timeSeconds": 214.96,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\xiaohongshu-final-06-214.96s.png",
+          "frameFile": "xiaohongshu-final-06-214.96s.png",
           "label": "Built precedent"
         }
       ],
@@ -78,7 +79,7 @@
       "frames": [
         {
           "timeSeconds": 184.22,
-          "path": "E:\\人工智能\\Codex\\10\\Woodlands_汇报视频\\发布下载版\\qa\\wechat-channels-final-01-184.22s.png",
+          "frameFile": "wechat-channels-final-01-184.22s.png",
           "label": "Functions and model"
         }
       ],
